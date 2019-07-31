@@ -136,3 +136,111 @@ exports['string and name'] = function (test) {
     test.equal(lexer.next(), null);
 };
 
+exports['semicolon as delimiter'] = function (test) {
+    const lexer = lexers.lexer(';');
+  
+    const token = lexer.next();
+    
+    test.ok(token);
+    test.equal(token.value, ';');
+    test.equal(token.type, TokenType.Delimiter);
+    
+    test.equal(lexer.next(), null);
+};
+
+exports['comma as delimiter'] = function (test) {
+    const lexer = lexers.lexer(',');
+  
+    const token = lexer.next();
+    
+    test.ok(token);
+    test.equal(token.value, ',');
+    test.equal(token.type, TokenType.Delimiter);
+    
+    test.equal(lexer.next(), null);
+};
+
+exports['parentheses as delimiters'] = function (test) {
+    const lexer = lexers.lexer('()');
+  
+    var token = lexer.next();
+    
+    test.ok(token);
+    test.equal(token.value, '(');
+    test.equal(token.type, TokenType.Delimiter);
+  
+    var token = lexer.next();
+    
+    test.ok(token);
+    test.equal(token.value, ')');
+    test.equal(token.type, TokenType.Delimiter);
+    
+    test.equal(lexer.next(), null);
+};
+
+exports['brackets as delimiters'] = function (test) {
+    const lexer = lexers.lexer('{}');
+  
+    var token = lexer.next();
+    
+    test.ok(token);
+    test.equal(token.value, '{');
+    test.equal(token.type, TokenType.Delimiter);
+  
+    var token = lexer.next();
+    
+    test.ok(token);
+    test.equal(token.value, '}');
+    test.equal(token.type, TokenType.Delimiter);
+    
+    test.equal(lexer.next(), null);
+};
+
+exports['square brackets as delimiters'] = function (test) {
+    const lexer = lexers.lexer('[]');
+  
+    var token = lexer.next();
+    
+    test.ok(token);
+    test.equal(token.value, '[');
+    test.equal(token.type, TokenType.Delimiter);
+  
+    var token = lexer.next();
+    
+    test.ok(token);
+    test.equal(token.value, ']');
+    test.equal(token.type, TokenType.Delimiter);
+    
+    test.equal(lexer.next(), null);
+};
+
+exports['dot as delimiter'] = function (test) {
+    const lexer = lexers.lexer('.');
+  
+    const token = lexer.next();
+    
+    test.ok(token);
+    test.equal(token.value, '.');
+    test.equal(token.type, TokenType.Delimiter);
+    
+    test.equal(lexer.next(), null);
+};
+
+exports['name and delimiter'] = function (test) {
+    const lexer = lexers.lexer('foo;');
+  
+    var token = lexer.next();
+    
+    test.ok(token);
+    test.equal(token.value, 'foo');
+    test.equal(token.type, TokenType.Name);
+  
+    var token = lexer.next();
+    
+    test.ok(token);
+    test.equal(token.value, ';');
+    test.equal(token.type, TokenType.Delimiter);
+    
+    test.equal(lexer.next(), null);
+};
+
