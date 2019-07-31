@@ -1,0 +1,30 @@
+{
+  "name": "monki",
+  "description": "Monki, Monkey-like C-like programming language implemented in JavaScript, WIP",
+  "keywords": [
+    "monkey",
+    "interpreter",
+    "programming"
+  ],
+  "version": "0.0.1alpha",
+  "author": "Angel 'Java' Lopez <webmaster@ajlopez.com> (http://www.ajlopez.com)",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ajlopez/monki.git"
+  },
+  "main": "./lib/monki.js",
+  "engines": {
+    "node": ">= 8.0.0"
+  },
+  "scripts": {
+    "test": "simpleunit ./test -r"
+  },
+  "dependencies": {
+    "geast": "0.0.9",
+    "gelex": "0.0.5",
+    "gepars": "0.0.5"
+  },
+  "devDependencies": {
+    "simpleunit": "0.0.8"
+  }
+}
