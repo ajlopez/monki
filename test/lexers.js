@@ -93,3 +93,15 @@ exports['integer'] = function (test) {
     test.equal(lexer.next(), null);
 };
 
+exports['real'] = function (test) {
+    const lexer = lexers.lexer('3.14159');
+  
+    const token = lexer.next();
+    
+    test.ok(token);
+    test.equal(token.value, '3.14159');
+    test.equal(token.type, TokenType.Real);
+    
+    test.equal(lexer.next(), null);
+};
+
