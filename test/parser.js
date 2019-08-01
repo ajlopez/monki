@@ -15,3 +15,11 @@ exports['parse constants'] = function (test) {
     parse(test, 'boolean', 'false', { ntype: 'constant', value: false });
 };
 
+exports['parse terms'] = function (test) {
+    parse(test, 'term', '42', { ntype: 'constant', value: 42 });
+    parse(test, 'term', '"foo"', { ntype: 'constant', value: 'foo' });
+    parse(test, 'term', 'true', { ntype: 'constant', value: true });
+    parse(test, 'term', 'false', { ntype: 'constant', value: false });
+    parse(test, 'term', 'answer', { ntype: 'name', name: 'answer' });
+};
+
