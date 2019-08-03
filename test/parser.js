@@ -49,9 +49,15 @@ exports['parse simple let command'] = function (test) {
     parse(test, 'command', 'let a = 42;', { ntype: 'assign', lefthand: { ntype: 'name', name: 'a' }, expression: { ntype: 'constant', value: 42 }});
 };
 
-exports['parse array value'] = function (test) {
+exports['parse array values'] = function (test) {
     parse(test, 'term', '[]', { ntype: 'array', values: [ ] });
     parse(test, 'term', '[ 42 ]', { ntype: 'array', values: [ { ntype: 'constant', value: 42 } ] });
     parse(test, 'term', '[ 1, 4, 9 ]', { ntype: 'array', values: [ { ntype: 'constant', value: 1 }, { ntype: 'constant', value: 4 }, { ntype: 'constant', value: 9 } ] });
+};
+
+exports['parse map values'] = function (test) {
+    parse(test, 'term', '{}', { ntype: 'map', keyvalues: [ ] });
+    parse(test, 'term', '{ "name": "Adam" }', { ntype: 'map', keyvalues: [ { ntype: 'keyvalue', key: { ntype: 'constant', value: 'name' }, value: { ntype: 'constant', value: 'Adam' } } ] });
+    parse(test, 'term', '{ "name": "Adam", "age": 900 }', { ntype: 'map', keyvalues: [ { ntype: 'keyvalue', key: { ntype: 'constant', value: 'name' }, value: { ntype: 'constant', value: 'Adam' } }, { ntype: 'keyvalue', key: { ntype: 'constant', value: 'age' }, value: { ntype: 'constant', value: 900 } } ] });
 };
 
