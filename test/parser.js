@@ -49,6 +49,10 @@ exports['parse simple let command'] = function (test) {
     parse(test, 'command', 'let a = 42;', { ntype: 'assign', lefthand: { ntype: 'name', name: 'a' }, expression: { ntype: 'constant', value: 42 }});
 };
 
+exports['parse return command'] = function (test) {
+    parse(test, 'command', 'return 42;', { ntype: 'return', expression: { ntype: 'constant', value: 42 }});
+};
+
 exports['parse array values'] = function (test) {
     parse(test, 'term', '[]', { ntype: 'array', values: [ ] });
     parse(test, 'term', '[ 42 ]', { ntype: 'array', values: [ { ntype: 'constant', value: 42 } ] });
