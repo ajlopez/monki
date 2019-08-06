@@ -53,6 +53,10 @@ exports['parse return command'] = function (test) {
     parse(test, 'command', 'return 42;', { ntype: 'return', expression: { ntype: 'constant', value: 42 }});
 };
 
+exports['parse expression command'] = function (test) {
+    parse(test, 'command', '42;', { ntype: 'eval', expression: { ntype: 'constant', value: 42 }});
+};
+
 exports['parse array values'] = function (test) {
     parse(test, 'term', '[]', { ntype: 'array', values: [ ] });
     parse(test, 'term', '[ 42 ]', { ntype: 'array', values: [ { ntype: 'constant', value: 42 } ] });
