@@ -69,3 +69,6 @@ exports['parse map values'] = function (test) {
     parse(test, 'term', '{ "name": "Adam", "age": 900 }', { ntype: 'map', keyvalues: [ { ntype: 'keyvalue', key: { ntype: 'constant', value: 'name' }, value: { ntype: 'constant', value: 'Adam' } }, { ntype: 'keyvalue', key: { ntype: 'constant', value: 'age' }, value: { ntype: 'constant', value: 900 } } ] });
 };
 
+exports['parse call'] = function (test) {
+    parse(test, 'term', 'foo(1, 42)', { ntype: 'call', target: { ntype: 'name', name: 'foo' }, arguments: [ { ntype: 'constant', value: 1 }, { ntype: 'constant', value: 42 } ] });
+};
