@@ -72,3 +72,8 @@ exports['parse map values'] = function (test) {
 exports['parse call'] = function (test) {
     parse(test, 'term', 'foo(1, 42)', { ntype: 'call', target: { ntype: 'name', name: 'foo' }, arguments: [ { ntype: 'constant', value: 1 }, { ntype: 'constant', value: 42 } ] });
 };
+
+exports['parse indexed term'] = function (test) {
+    parse(test, 'term', 'foo[42]', { ntype: 'indexed', target: { ntype: 'name', name: 'foo' }, index: { ntype: 'constant', value: 42 } });
+};
+
