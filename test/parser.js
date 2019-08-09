@@ -77,3 +77,7 @@ exports['parse indexed term'] = function (test) {
     parse(test, 'term', 'foo[42]', { ntype: 'indexed', target: { ntype: 'name', name: 'foo' }, index: { ntype: 'constant', value: 42 } });
 };
 
+exports['parse composite command'] = function (test) {
+    parse(test, 'command', '{ let a = 42; return a; }', { ntype: 'sequence', nodes: [ { ntype: 'assign', lefthand: { ntype: 'name', name: 'a' }, expression: { ntype: 'constant', value: 42 } }, { ntype: 'return', expression: { ntype: 'name', name: 'a' }}]});
+};
+
