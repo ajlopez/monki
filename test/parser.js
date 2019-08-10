@@ -78,6 +78,13 @@ exports['parse indexed term'] = function (test) {
 };
 
 exports['parse composite command'] = function (test) {
+    parse(test, 'command', '{ }', { ntype: 'sequence', nodes: [ ]});
+    parse(test, 'command', 'let a = 42; }', { ntype: 'assign', lefthand: { ntype: 'name', name: 'a' }, expression: { ntype: 'constant', value: 42 } });
+    parse(test, 'command', 'return a; }', { ntype: 'return', expression: { ntype: 'name', name: 'a' } });
+    parse(test, 'cmdlist', 'let a = 42; }', [{ ntype: 'assign', lefthand: { ntype: 'name', name: 'a' }, expression: { ntype: 'constant', value: 42 } }]);
+    parse(test, 'cmdlist', 'return a; }', [{ ntype: 'return', expression: { ntype: 'name', name: 'a' } }]);
+    parse(test, 'cmdlist', 'let a = 42; return a; }', [{ ntype: 'assign', lefthand: { ntype: 'name', name: 'a' }, expression: { ntype: 'constant', value: 42 } }, { ntype: 'return', expression: { ntype: 'name', name: 'a' } }]);
+    parse(test, 'command', '{ let a = 42; }', { ntype: 'sequence', nodes: [ { ntype: 'assign', lefthand: { ntype: 'name', name: 'a' }, expression: { ntype: 'constant', value: 42 } }]});
     parse(test, 'command', '{ let a = 42; return a; }', { ntype: 'sequence', nodes: [ { ntype: 'assign', lefthand: { ntype: 'name', name: 'a' }, expression: { ntype: 'constant', value: 42 } }, { ntype: 'return', expression: { ntype: 'name', name: 'a' }}]});
 };
 
