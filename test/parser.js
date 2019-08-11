@@ -90,5 +90,6 @@ exports['parse composite command'] = function (test) {
 
 exports['parse if command'] = function (test) {
     parse(test, 'command', 'if (a) return 42;', { ntype: 'conditional', condition: { ntype: 'name', name: 'a' }, then: { ntype: 'return', expression: { ntype: 'constant', value: 42 } }});
+    parse(test, 'command', 'if (a) return 42; else return 1;', { ntype: 'conditional', condition: { ntype: 'name', name: 'a' }, then: { ntype: 'return', expression: { ntype: 'constant', value: 42 } }, else: { ntype: 'return', expression: { ntype: 'constant', value: 1 } }});
 };
 
