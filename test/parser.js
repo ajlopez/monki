@@ -93,3 +93,7 @@ exports['parse if command'] = function (test) {
     parse(test, 'command', 'if (a) return 42; else return 1;', { ntype: 'conditional', condition: { ntype: 'name', name: 'a' }, then: { ntype: 'return', expression: { ntype: 'constant', value: 42 } }, else: { ntype: 'return', expression: { ntype: 'constant', value: 1 } }});
 };
 
+exports['parse fn expression'] = function (test) {
+    parse(test, 'expression', 'fn (a, b) { return a+b; }', { ntype: 'function', arguments: [ 'a', 'b' ], body: { ntype: 'sequence', nodes: [ { ntype: 'return', expression: { ntype: 'binary', operator: '+', left: { ntype: 'name', name: 'a' }, right: { ntype: 'name', name: 'b' } } } ] } });
+};
+
