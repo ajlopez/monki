@@ -15,3 +15,11 @@ exports['process constants'] = function (test) {
     process(test, 'true', true);
     process(test, 'false', false);
 };
+
+exports['process name'] = function (test) {
+    const context = contexts.context();
+    context.set('answer', 42);
+    
+    process(test, 'answer', 42, context);
+};
+
