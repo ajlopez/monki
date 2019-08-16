@@ -37,3 +37,11 @@ exports['process let command'] = function (test) {
     test.equal(context.get('answer'), 42);
 };
 
+exports['process sequence command'] = function (test) {
+    const context = contexts.context();
+    
+    processc(test, '{ let answer = 42; let one = 1; }', 1, context);
+    test.equal(context.get('answer'), 42);
+    test.equal(context.get('one'), 1);
+};
+
