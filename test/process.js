@@ -45,3 +45,7 @@ exports['process sequence command'] = function (test) {
     test.equal(context.get('one'), 1);
 };
 
+exports['process expression command'] = function (test) {
+    processc(test, '42;', 42);
+};
+
