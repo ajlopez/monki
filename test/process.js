@@ -49,3 +49,14 @@ exports['process expression command'] = function (test) {
     processc(test, '42;', 42);
 };
 
+exports['process if command'] = function (test) {
+    const context = contexts.context();
+    
+    processc(test, 'if (true) let answer = 42;', 42, context);
+    test.equal(context.get('answer'), 42);
+
+    processc(test, 'if (false) let answer = 0; else let one = 1;', 1, context);
+    test.equal(context.get('answer'), 42);
+    test.equal(context.get('one'), 1);
+};
+
