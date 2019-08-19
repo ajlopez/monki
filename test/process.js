@@ -72,3 +72,11 @@ exports['process fn expression and call'] = function (test) {
     test.ok(context.get('increment'));
 };
 
+exports['process fn expression and call using outer context'] = function (test) {
+    const context = contexts.context();
+    
+    processc(test, '{ let one = 1; let increment = fn (a) { a + one; }; increment(41); }', 42, context);
+    
+    test.ok(context.get('increment'));
+};
+
