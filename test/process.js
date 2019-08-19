@@ -23,8 +23,11 @@ exports['process constants'] = function (test) {
     process(test, 'false', false);
 };
 
-exports['process add constants'] = function (test) {
+exports['process arithmetic operations'] = function (test) {
     process(test, '41+1', 42);
+    process(test, '43-1', 42);
+    process(test, '21*2', 42);
+    process(test, '84/2', 42);
 };
 
 exports['process name'] = function (test) {
