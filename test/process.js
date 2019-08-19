@@ -23,6 +23,10 @@ exports['process constants'] = function (test) {
     process(test, 'false', false);
 };
 
+exports['process add constants'] = function (test) {
+    process(test, '41+1', 42);
+};
+
 exports['process name'] = function (test) {
     const context = contexts.context();
     context.set('answer', 42);
@@ -58,5 +62,13 @@ exports['process if command'] = function (test) {
     processc(test, 'if (false) let answer = 0; else let one = 1;', 1, context);
     test.equal(context.get('answer'), 42);
     test.equal(context.get('one'), 1);
+};
+
+exports['process fn expression and call'] = function (test) {
+    const context = contexts.context();
+    
+    processc(test, '{ let increment = fn (a) { a + 1; }; increment(41); }', 42, context);
+    
+    test.ok(context.get('increment'));
 };
 
