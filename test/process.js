@@ -30,6 +30,13 @@ exports['process arithmetic operations'] = function (test) {
     process(test, '84/2', 42);
 };
 
+exports['process arithmetic operations using precedence'] = function (test) {
+    process(test, '38+2*2', 42);
+    process(test, '46-2*2', 42);
+    process(test, '20*2+2', 42);
+    process(test, '82/2+1', 42);
+};
+
 exports['process name'] = function (test) {
     const context = contexts.context();
     context.set('answer', 42);
