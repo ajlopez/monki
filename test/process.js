@@ -37,6 +37,19 @@ exports['process arithmetic operations using precedence'] = function (test) {
     process(test, '82/2+1', 42);
 };
 
+exports['process comparison operations'] = function (test) {
+    process(test, '42==21*2', true);
+    process(test, '42==41', false);
+    process(test, '42!=1', true);
+    process(test, '42!=42', false);
+    process(test, '42<100', true);
+    process(test, '42<=100', true);
+    process(test, '42<10', false);
+    process(test, '42>10', true);
+    process(test, '42>=10', true);
+    process(test, '42>=100', false);
+};
+
 exports['process name'] = function (test) {
     const context = contexts.context();
     context.set('answer', 42);
