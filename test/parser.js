@@ -97,3 +97,7 @@ exports['parse fn expression'] = function (test) {
     parse(test, 'expression', 'fn (a, b) { return a+b; }', { ntype: 'function', parameters: [ 'a', 'b' ], body: { ntype: 'sequence', nodes: [ { ntype: 'return', expression: { ntype: 'binary', operator: '+', left: { ntype: 'name', name: 'a' }, right: { ntype: 'name', name: 'b' } } } ] } });
 };
 
+exports['parse program'] = function (test) {
+    parse(test, 'program', 'let a = 42; let one = 1;', { ntype: 'sequence', nodes: [ { ntype: 'assign', lefthand: { ntype: 'name', name: 'a' }, expression: { ntype: 'constant', value: 42 } }, { ntype: 'assign', lefthand: { ntype: 'name', name: 'one' }, expression: { ntype: 'constant', value: 1 } }]});
+};
+
