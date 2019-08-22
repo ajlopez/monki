@@ -103,3 +103,12 @@ exports['process fn expression and call using outer context'] = function (test) 
     test.ok(context.get('increment'));
 };
 
+exports['process fn expression and call using return'] = function (test) {
+    const context = contexts.context();
+    
+    processc(test, '{ let analyze = fn (a) { if (a == 2) return true; return false; }; let a = analyze(2); let b = analyze(3); }', false, context);
+    
+    test.equal(context.get('a'), true);
+    test.equal(context.get('b'), false);
+};
+
