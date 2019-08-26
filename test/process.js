@@ -5,8 +5,11 @@ const contexts = require('../lib/contexts');
 function process(test, text, expected, context) {
     const node = parser.parse('expression', text);
     const result = interpreter.process(node, context);
-    
-    test.strictEqual(result, expected);
+
+    if (Array.isArray(expected))
+        test.deepEqual(result, expected);
+    else
+        test.strictEqual(result, expected);
 }
 
 function processc(test, text, expected, context) {
@@ -112,3 +115,7 @@ exports['process fn expression and call using return'] = function (test) {
     test.equal(context.get('b'), false);
 };
 
+exports['process array expressions'] = function (test) {
+    process(test, '[ 1, 4, 9 ]', [ 1, 4, 9 ]);
+    process(test, '[ ]', [ ]);
+};
