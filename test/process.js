@@ -6,10 +6,7 @@ function process(test, text, expected, context) {
     const node = parser.parse('expression', text);
     const result = interpreter.process(node, context);
 
-    if (Array.isArray(expected))
-        test.deepEqual(result, expected);
-    else
-        test.strictEqual(result, expected);
+    test.deepEqual(result, expected);
 }
 
 function processc(test, text, expected, context) {
@@ -119,3 +116,9 @@ exports['process array expressions'] = function (test) {
     process(test, '[ 1, 4, 9 ]', [ 1, 4, 9 ]);
     process(test, '[ ]', [ ]);
 };
+
+exports['process map expressions'] = function (test) {
+    process(test, '{ "name": "Adam", "age": 900 }', { name: "Adam", age: 900 });
+    process(test, '{ }', {});
+};
+
