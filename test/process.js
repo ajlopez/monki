@@ -122,3 +122,13 @@ exports['process map expressions'] = function (test) {
     process(test, '{ }', {});
 };
 
+exports['assign to array'] = function (test) {
+    const context = contexts.context();
+    
+    processc(test, '{ let a = []; let a[1] = 1; let a[2] = 4; let a[3] = 9;  }', 9, context);
+
+    test.equal(context.get('a')[1], 1);
+    test.equal(context.get('a')[2], 4);
+    test.equal(context.get('a')[3], 9);
+};
+
