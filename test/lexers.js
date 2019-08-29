@@ -105,6 +105,18 @@ exports['string'] = function (test) {
     test.equal(lexer.next(), null);
 };
 
+exports['string with escaped characters'] = function (test) {
+    const lexer = lexers.lexer('"\\tfoo\\r\\n"');
+  
+    const token = lexer.next();
+    
+    test.ok(token);
+    test.equal(token.value, '\tfoo\r\n');
+    test.equal(token.type, TokenType.String);
+    
+    test.equal(lexer.next(), null);
+};
+
 exports['string and name'] = function (test) {
     const lexer = lexers.lexer('"foo" bar');
   
