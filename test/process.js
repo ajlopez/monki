@@ -132,3 +132,12 @@ exports['assign to array'] = function (test) {
     test.equal(context.get('a')[3], 9);
 };
 
+exports['assign to map'] = function (test) {
+    const context = contexts.context();
+    
+    processc(test, '{ let a = {}; let a["name"] = "Adam"; let a["age"] = 900; }', 900, context);
+
+    test.equal(context.get('a').name, "Adam");
+    test.equal(context.get('a').age, 900);
+};
+
