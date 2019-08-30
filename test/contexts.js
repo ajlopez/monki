@@ -41,3 +41,10 @@ exports['get variable from child'] = function (test) {
     test.equal(context.get('foo'), 42);
     test.equal(parent.get('foo'), null);
 };
+
+exports['top context len built-in function'] = function (test) {
+    const context = contexts.top();
+    
+    test.equal(context.get('len')("foo"), 3);
+    test.equal(context.get('len')([ 42 ]), 1);
+};
