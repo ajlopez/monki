@@ -56,3 +56,11 @@ exports['top context first built-in function'] = function (test) {
     test.equal(context.get('first')([]), null);
 };
 
+exports['top context rest built-in function'] = function (test) {
+    const context = contexts.top();
+    
+    test.deepEqual(context.get('rest')([1, 4, 9]), [4, 9]);
+    test.deepEqual(context.get('rest')([9]), []);
+    test.deepEqual(context.get('rest')([]), []);
+};
+
