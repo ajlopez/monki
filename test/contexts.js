@@ -48,3 +48,11 @@ exports['top context len built-in function'] = function (test) {
     test.equal(context.get('len')("foo"), 3);
     test.equal(context.get('len')([ 42 ]), 1);
 };
+
+exports['top context first built-in function'] = function (test) {
+    const context = contexts.top();
+    
+    test.equal(context.get('first')([1, 4, 9]), 1);
+    test.equal(context.get('first')([]), null);
+};
+
