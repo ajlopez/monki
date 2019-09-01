@@ -64,3 +64,20 @@ exports['top context rest built-in function'] = function (test) {
     test.deepEqual(context.get('rest')([]), null);
 };
 
+exports['top context puts built-in function'] = function (test) {
+    const result = [];
+    
+    const context = contexts.top({ println: function(arg) {
+        result.push(arg);
+        
+        return result;
+    }});
+    
+    test.equal(context.get('puts')(1, 4, 9), 9);
+    test.deepEqual(result, [1, 4, 9]);
+    test.equal(context.get('puts')(9), 9);
+    test.deepEqual(result, [1, 4, 9, 9]);
+    test.equal(context.get('puts')(), null);
+    test.deepEqual(result, [1, 4, 9, 9]);
+};
+
