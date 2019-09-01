@@ -71,6 +71,12 @@ exports['parse map values'] = function (test) {
     parse(test, 'term', '{}', { ntype: 'map', keyvalues: [ ] });
     parse(test, 'term', '{ "name": "Adam" }', { ntype: 'map', keyvalues: [ { ntype: 'keyvalue', key: { ntype: 'constant', value: 'name' }, value: { ntype: 'constant', value: 'Adam' } } ] });
     parse(test, 'term', '{ "name": "Adam", "age": 900 }', { ntype: 'map', keyvalues: [ { ntype: 'keyvalue', key: { ntype: 'constant', value: 'name' }, value: { ntype: 'constant', value: 'Adam' } }, { ntype: 'keyvalue', key: { ntype: 'constant', value: 'age' }, value: { ntype: 'constant', value: 900 } } ] });
+    parse(test, 'term', '{ 4: 4, true: false, false: true }', {
+        ntype: 'map', keyvalues: [ 
+            { ntype: 'keyvalue', key: { ntype: 'constant', value: 4 }, value: { ntype: 'constant', value: 4 } }, 
+            { ntype: 'keyvalue', key: { ntype: 'constant', value: true }, value: { ntype: 'constant', value: false } }, 
+            { ntype: 'keyvalue', key: { ntype: 'constant', value: false }, value: { ntype: 'constant', value: true } }
+        ] });
 };
 
 exports['parse call'] = function (test) {
