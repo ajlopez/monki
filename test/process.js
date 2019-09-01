@@ -141,3 +141,10 @@ exports['assign to map'] = function (test) {
     test.equal(context.get('a').age, 900);
 };
 
+exports['evaluate native function call'] = function (test) {
+    const context = contexts.context();
+    context.set('add', function (x, y) { return x + y });
+    
+    process(test, 'add(2, 40)', 42, context);
+};
+
