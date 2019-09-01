@@ -61,6 +61,6 @@ exports['top context rest built-in function'] = function (test) {
     
     test.deepEqual(context.get('rest')([1, 4, 9]), [4, 9]);
     test.deepEqual(context.get('rest')([9]), []);
-    test.deepEqual(context.get('rest')([]), []);
+    test.deepEqual(context.get('rest')([]), null);
 };
 
