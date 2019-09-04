@@ -64,6 +64,15 @@ exports['top context rest built-in function'] = function (test) {
     test.deepEqual(context.get('rest')([]), null);
 };
 
+exports['top context push built-in function'] = function (test) {
+    const context = contexts.top();
+    
+    const values = [ 1, 4, 9 ];
+    
+    test.deepEqual(context.get('push')([1, 4, 9], 16), [ 1, 4, 9, 16 ]);
+    test.deepEqual(values, [ 1, 4, 9 ]);
+};
+
 exports['top context puts built-in function'] = function (test) {
     const result = [];
     
