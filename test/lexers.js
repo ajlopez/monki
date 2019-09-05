@@ -238,6 +238,24 @@ exports['minus as operator'] = function (test) {
     test.equal(lexer.next(), null);
 };
 
+exports['logical and or operators'] = function (test) {
+    const lexer = lexers.lexer('|| &&');
+  
+    const token = lexer.next();
+    
+    test.ok(token);
+    test.equal(token.value, '||');
+    test.equal(token.type, TokenType.Operator);
+  
+    const token2 = lexer.next();
+    
+    test.ok(token2);
+    test.equal(token2.value, '&&');
+    test.equal(token2.type, TokenType.Operator);
+    
+    test.equal(lexer.next(), null);
+};
+
 exports['exclamation mark as operator'] = function (test) {
     const lexer = lexers.lexer('!');
   
