@@ -238,6 +238,18 @@ exports['minus as operator'] = function (test) {
     test.equal(lexer.next(), null);
 };
 
+exports['exclamation mark as operator'] = function (test) {
+    const lexer = lexers.lexer('!');
+  
+    const token = lexer.next();
+    
+    test.ok(token);
+    test.equal(token.value, '!');
+    test.equal(token.type, TokenType.Operator);
+    
+    test.equal(lexer.next(), null);
+};
+
 exports['name and delimiter'] = function (test) {
     const lexer = lexers.lexer('foo;');
   
