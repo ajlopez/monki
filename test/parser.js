@@ -49,6 +49,13 @@ exports['parse comparison expressions'] = function (test) {
     parse(test, 'expression', '40<2*40', { ntype: 'binary', operator: '<', left: { ntype: 'constant', value: 40 }, right: { ntype: 'binary', operator: '*', left: { ntype: 'constant', value: 2 }, right: { ntype: 'constant', value: 40 } }});
 };
 
+exports['parse logical binary expressions'] = function (test) {
+    parse(test, 'expression', 'true||false', { ntype: 'binary', operator: '||', left: { ntype: 'constant', value: true }, right: { ntype: 'constant', value: false }});
+    parse(test, 'expression', 'true&&false', { ntype: 'binary', operator: '&&', left: { ntype: 'constant', value: true }, right: { ntype: 'constant', value: false }});
+    parse(test, 'expression', 'true && 40<2', { ntype: 'binary', operator: '&&', right: { ntype: 'binary', operator: '<', left: { ntype: 'constant', value: 40 }, right: { ntype: 'constant', value: 2 }, left: { ntype: 'constant', value: true }}});
+    parse(test, 'expression', 'true || 40<2', { ntype: 'binary', operator: '||', right: { ntype: 'binary', operator: '<', left: { ntype: 'constant', value: 40 }, right: { ntype: 'constant', value: 2 }, left: { ntype: 'constant', value: true }}});
+};
+
 exports['parse simple let command'] = function (test) {
     parse(test, 'command', 'let a = 42;', { ntype: 'assign', lefthand: { ntype: 'name', name: 'a' }, expression: { ntype: 'constant', value: 42 }});
 };

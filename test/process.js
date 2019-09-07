@@ -50,6 +50,13 @@ exports['process comparison operations'] = function (test) {
     process(test, '42>=100', false);
 };
 
+exports['process and logical operator'] = function (test) {
+    process(test, 'true||false', true);
+    process(test, 'false||true', true);
+    process(test, 'false||false', false);
+    process(test, '0||true', true);
+};
+
 exports['process name'] = function (test) {
     const context = contexts.context();
     context.set('answer', 42);
