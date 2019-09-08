@@ -50,11 +50,20 @@ exports['process comparison operations'] = function (test) {
     process(test, '42>=100', false);
 };
 
-exports['process and logical operator'] = function (test) {
+exports['process or logical operator'] = function (test) {
+    process(test, 'true||true', true);
     process(test, 'true||false', true);
     process(test, 'false||true', true);
     process(test, 'false||false', false);
     process(test, '0||true', true);
+};
+
+exports['process and logical operator'] = function (test) {
+    process(test, 'true&&true', true);
+    process(test, 'true&&false', false);
+    process(test, 'false&&true', false);
+    process(test, 'false&&false', false);
+    process(test, '0&&true', 0);
 };
 
 exports['process name'] = function (test) {
