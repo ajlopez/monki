@@ -66,6 +66,12 @@ exports['process and logical operator'] = function (test) {
     process(test, '0&&true', 0);
 };
 
+exports['process unary operators'] = function (test) {
+    process(test, '!true', false);
+    process(test, '!false', true);
+    process(test, '-42', -42);
+};
+
 exports['process name'] = function (test) {
     const context = contexts.context();
     context.set('answer', 42);
