@@ -30,6 +30,11 @@ exports['process arithmetic operations'] = function (test) {
     process(test, '84/2', 42);
 };
 
+exports['process integer division'] = function (test) {
+    process(test, '3/2', 1);
+    process(test, '-3/2', -2);
+};
+
 exports['process arithmetic operations using precedence'] = function (test) {
     process(test, '38+2*2', 42);
     process(test, '46-2*2', 42);
