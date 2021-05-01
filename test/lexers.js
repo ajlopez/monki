@@ -286,3 +286,15 @@ exports['name and delimiter'] = function (test) {
     test.equal(lexer.next(), null);
 };
 
+exports['if as keyword'] = function (test) {
+    const lexer = lexers.lexer('if');
+  
+    const token = lexer.next();
+    
+    test.ok(token);
+    test.equal(token.value, 'if');
+    test.equal(token.type, TokenType.Keyword);
+    
+    test.equal(lexer.next(), null);
+};
+
