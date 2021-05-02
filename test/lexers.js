@@ -298,3 +298,27 @@ exports['if as keyword'] = function (test) {
     test.equal(lexer.next(), null);
 };
 
+exports['if as keyword'] = function (test) {
+    const lexer = lexers.lexer('while let return');
+  
+    const token = lexer.next();
+    
+    test.ok(token);
+    test.equal(token.value, 'while');
+    test.equal(token.type, TokenType.Keyword);
+  
+    const token2 = lexer.next();
+    
+    test.ok(token2);
+    test.equal(token2.value, 'let');
+    test.equal(token2.type, TokenType.Keyword);
+  
+    const token3 = lexer.next();
+    
+    test.ok(token3);
+    test.equal(token3.value, 'return');
+    test.equal(token3.type, TokenType.Keyword);
+    
+    test.equal(lexer.next(), null);
+};
+
