@@ -310,6 +310,24 @@ exports['fn as keyword'] = function (test) {
     test.equal(lexer.next(), null);
 };
 
+exports['true and false as keywords'] = function (test) {
+    const lexer = lexers.lexer('true false');
+  
+    const token = lexer.next();
+    
+    test.ok(token);
+    test.equal(token.value, 'true');
+    test.equal(token.type, TokenType.Keyword);
+  
+    const token2 = lexer.next();
+    
+    test.ok(token2);
+    test.equal(token2.value, 'false');
+    test.equal(token2.type, TokenType.Keyword);
+    
+    test.equal(lexer.next(), null);
+};
+
 exports['if as keyword'] = function (test) {
     const lexer = lexers.lexer('while let return');
   
