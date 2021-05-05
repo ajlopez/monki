@@ -298,6 +298,18 @@ exports['if as keyword'] = function (test) {
     test.equal(lexer.next(), null);
 };
 
+exports['else as keyword'] = function (test) {
+    const lexer = lexers.lexer('else');
+  
+    const token = lexer.next();
+    
+    test.ok(token);
+    test.equal(token.value, 'else');
+    test.equal(token.type, TokenType.Keyword);
+    
+    test.equal(lexer.next(), null);
+};
+
 exports['fn as keyword'] = function (test) {
     const lexer = lexers.lexer('fn');
   
